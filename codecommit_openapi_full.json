@@ -1,0 +1,3990 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AWS CodeCommit API",
+    "version": "2015-04-13"
+  },
+  "paths": {
+    "/AssociateApprovalRuleTemplateWithRepository": {
+      "post": {
+        "summary": "Creates an association between an approval rule template and a specified repository. Then, the next time a pull request is created in the repository where the destination reference (if specified) matches the destination reference (branch) for the pull request, an approval rule that matches the template conditions is automatically created for that pull request. If no destination references are specified in the template, an approval rule that matches the template contents is created for all pull requests in that repository.",
+        "operationId": "AssociateApprovalRuleTemplateWithRepository",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateName",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/BatchAssociateApprovalRuleTemplateWithRepositories": {
+      "post": {
+        "summary": "Creates an association between an approval rule template and one or more specified repositories.",
+        "operationId": "BatchAssociateApprovalRuleTemplateWithRepositories",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  },
+                  "repositoryNames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateName",
+                  "repositoryNames"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/BatchDescribeMergeConflicts": {
+      "post": {
+        "summary": "Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy.",
+        "operationId": "BatchDescribeMergeConflicts",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "filePaths": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "maxConflictFiles": {
+                    "type": "integer"
+                  },
+                  "maxMergeHunks": {
+                    "type": "integer"
+                  },
+                  "mergeOption": {
+                    "type": "string"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "mergeOption",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/BatchDisassociateApprovalRuleTemplateFromRepositories": {
+      "post": {
+        "summary": "Removes the association between an approval rule template and one or more specified repositories.",
+        "operationId": "BatchDisassociateApprovalRuleTemplateFromRepositories",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  },
+                  "repositoryNames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateName",
+                  "repositoryNames"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/BatchGetCommits": {
+      "post": {
+        "summary": "Returns information about the contents of one or more commits in a repository.",
+        "operationId": "BatchGetCommits",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commitIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "Note": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "commitIds",
+                  "Note"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/BatchGetRepositories": {
+      "post": {
+        "summary": "Returns information about one or more repositories. Note The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML- encode the description field in any application that uses this API to display the repository description on a webpage.",
+        "operationId": "BatchGetRepositories",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repositoryNames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "repositoryNames"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/CreateApprovalRuleTemplate": {
+      "post": {
+        "summary": "Creates a template for approval rules that can then be associated with one or more repositories in your AWS account. When you associate a template with a repository, AWS CodeCommit creates an approval rule that matches the conditions of the template for all pull requests that meet the conditions of the template. For more information, see AssociateApprovalRuleTemplateWithRepository .",
+        "operationId": "CreateApprovalRuleTemplate",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateContent": {
+                    "type": "string"
+                  },
+                  "Note": {
+                    "type": "string"
+                  },
+                  "CodeCommitApprovers": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateContent",
+                  "CodeCommitApprovers"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/CreateBranch": {
+      "post": {
+        "summary": "Creates a branch in a repository and points the branch to a commit. Note Calling the create branch operation does not set a repository's default branch. To do this, call the update default branch operation.",
+        "operationId": "CreateBranch",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branchName": {
+                    "type": "string"
+                  },
+                  "commitId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branchName",
+                  "commitId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/CreateCommit": {
+      "post": {
+        "summary": "Creates a commit for a repository on the tip of a specified branch.",
+        "operationId": "CreateCommit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authorName": {
+                    "type": "string"
+                  },
+                  "branchName": {
+                    "type": "string"
+                  },
+                  "commitMessage": {
+                    "type": "string"
+                  },
+                  "deleteFiles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "keepEmptyFolders": {
+                    "type": "boolean"
+                  },
+                  "parentCommitId": {
+                    "type": "string"
+                  },
+                  "putFiles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "setFileModes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "branchName",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/CreatePullRequest": {
+      "post": {
+        "summary": "Creates a pull request in the specified repository.",
+        "operationId": "CreatePullRequest",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientRequestToken": {
+                    "type": "string"
+                  },
+                  "Note": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "targets": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "targets"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/CreatePullRequestApprovalRule": {
+      "post": {
+        "summary": "Creates an approval rule for a pull request.",
+        "operationId": "CreatePullRequestApprovalRule",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleContent": {
+                    "type": "string"
+                  },
+                  "Note": {
+                    "type": "string"
+                  },
+                  "CodeCommitApprovers": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleContent",
+                  "Note",
+                  "CodeCommitApprovers"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/CreateRepository": {
+      "post": {
+        "summary": "Creates a new, empty repository. Important The CreateRepository operation in AWS CodeCommit is no longer available to new customers. Existing customers of AWS CodeCommit can continue to use the operation as normal. Learn more\"",
+        "operationId": "CreateRepository",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kmsKeyId": {
+                    "type": "string"
+                  },
+                  "repositoryDescription": {
+                    "type": "string"
+                  },
+                  "Note": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "Note"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/CreateUnreferencedMergeCommit": {
+      "post": {
+        "summary": "Creates an unreferenced commit that represents the result of merging two branches using a specified merge strategy. This can help you determine the outcome of a potential merge. This API cannot be used with the fast-forward merge strategy because that strategy does not create a merge commit. Note This unreferenced merge commit can only be accessed using the GetCommit API or through git commands such as git fetch. To retrieve this commit, you must specify its commit ID or otherwise reference it.",
+        "operationId": "CreateUnreferencedMergeCommit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authorName": {
+                    "type": "string"
+                  },
+                  "commitMessage": {
+                    "type": "string"
+                  },
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "keepEmptyFolders": {
+                    "type": "boolean"
+                  },
+                  "mergeOption": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "mergeOption",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DeleteApprovalRuleTemplate": {
+      "delete": {
+        "summary": "Deletes a specified approval rule template. Deleting a template does not remove approval rules on pull requests already created with the template.",
+        "operationId": "DeleteApprovalRuleTemplate",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DeleteBranch": {
+      "delete": {
+        "summary": "Deletes a branch from a repository, unless that branch is the default branch for the repository.",
+        "operationId": "DeleteBranch",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branchName": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branchName",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DeleteCommentContent": {
+      "delete": {
+        "summary": "Deletes the content of a comment made on a change, file, or commit in a repository.",
+        "operationId": "DeleteCommentContent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commentId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "commentId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DeleteFile": {
+      "delete": {
+        "summary": "Deletes a specified file from a specified branch. A commit is created on the branch that contains the revision. The file still exists in the commits earlier to the commit that contains the deletion.",
+        "operationId": "DeleteFile",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branchName": {
+                    "type": "string"
+                  },
+                  "commitMessage": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "filePath": {
+                    "type": "string"
+                  },
+                  "keepEmptyFolders": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "parentCommitId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branchName",
+                  "filePath",
+                  "parentCommitId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DeletePullRequestApprovalRule": {
+      "delete": {
+        "summary": "Deletes an approval rule from a specified pull request. Approval rules can be deleted from a pull request only if the pull request is open, and if the approval rule was created specifically for a pull request and not generated from an approval rule template associated with the repository where the pull request was created. You cannot delete an approval rule from a merged or closed pull request.",
+        "operationId": "DeletePullRequestApprovalRule",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleName": {
+                    "type": "string"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleName",
+                  "pullRequestId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DeleteRepository": {
+      "delete": {
+        "summary": "Deletes a repository. If a specified repository was already deleted, a null repository ID is returned. Important Deleting a repository also deletes all associated objects and metadata. After a repository is deleted, all future push calls to the deleted repository fail.",
+        "operationId": "DeleteRepository",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DescribeMergeConflicts": {
+      "post": {
+        "summary": "Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy. If the merge option for the attempted merge is specified as FAST_FORWARD_MERGE, an exception is thrown.",
+        "operationId": "DescribeMergeConflicts",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "filePath": {
+                    "type": "string"
+                  },
+                  "maxMergeHunks": {
+                    "type": "integer"
+                  },
+                  "mergeOption": {
+                    "type": "string"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "filePath",
+                  "mergeOption",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DescribePullRequestEvents": {
+      "post": {
+        "summary": "Returns information about one or more pull request events.",
+        "operationId": "DescribePullRequestEvents",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "actorArn": {
+                    "type": "string"
+                  },
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "pullRequestEventType": {
+                    "type": "string"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/DisassociateApprovalRuleTemplateFromRepository": {
+      "post": {
+        "summary": "Removes the association between a template and a repository so that approval rules based on the template are not automatically created when pull requests are created in the specified repository. This does not delete any approval rules previously created for pull requests through the template association.",
+        "operationId": "DisassociateApprovalRuleTemplateFromRepository",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateName",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/EvaluatePullRequestApprovalRules": {
+      "post": {
+        "summary": "Evaluates whether a pull request has met all the conditions specified in its associated approval rules.",
+        "operationId": "EvaluatePullRequestApprovalRules",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "revisionId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId",
+                  "revisionId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetApprovalRuleTemplate": {
+      "get": {
+        "summary": "Returns information about a specified approval rule template.",
+        "operationId": "GetApprovalRuleTemplate",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetBlob": {
+      "get": {
+        "summary": "Returns the base-64 encoded content of an individual blob in a repository.",
+        "operationId": "GetBlob",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "blobId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "blobId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetBranch": {
+      "get": {
+        "summary": "Returns information about a repository branch, including its name and the last commit ID.",
+        "operationId": "GetBranch",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branchName": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetComment": {
+      "get": {
+        "summary": "Returns the content of a comment made on a change, file, or commit in a repository. Note Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of reactions from active identities, use GetCommentReactions.",
+        "operationId": "GetComment",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commentId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "commentId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetCommentReactions": {
+      "get": {
+        "summary": "Returns information about reactions to a specified comment ID. Reactions from users who have been deleted will not be included in the count.",
+        "operationId": "GetCommentReactions",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commentId": {
+                    "type": "string"
+                  },
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "reactionUserArn": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "commentId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetCommentsForComparedCommit": {
+      "get": {
+        "summary": "Returns information about comments made on the comparison between two commits. Note Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of reactions from active identities, use GetCommentReactions.",
+        "operationId": "GetCommentsForComparedCommit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "afterCommitId": {
+                    "type": "string"
+                  },
+                  "beforeCommitId": {
+                    "type": "string"
+                  },
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "afterCommitId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetCommentsForPullRequest": {
+      "get": {
+        "summary": "Returns comments made on a pull request. Note Reaction counts might include numbers from user identities who were deleted after the reaction was made. For a count of reactions from active identities, use GetCommentReactions.",
+        "operationId": "GetCommentsForPullRequest",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "afterCommitId": {
+                    "type": "string"
+                  },
+                  "beforeCommitId": {
+                    "type": "string"
+                  },
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetCommit": {
+      "get": {
+        "summary": "Returns information about a commit, including commit message and committer information.",
+        "operationId": "GetCommit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commitId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "commitId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetDifferences": {
+      "get": {
+        "summary": "Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path.",
+        "operationId": "GetDifferences",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "afterCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "afterPath": {
+                    "type": "string"
+                  },
+                  "beforeCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "beforePath": {
+                    "type": "string"
+                  },
+                  "MaxResults": {
+                    "type": "integer"
+                  },
+                  "NextToken": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "afterCommitSpecifier",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetFile": {
+      "get": {
+        "summary": "Returns the base-64 encoded contents of a specified file and its metadata.",
+        "operationId": "GetFile",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commitSpecifier": {
+                    "type": "string"
+                  },
+                  "filePath": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "filePath",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetFolder": {
+      "get": {
+        "summary": "Returns the contents of a specified folder in a repository.",
+        "operationId": "GetFolder",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commitSpecifier": {
+                    "type": "string"
+                  },
+                  "folderPath": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "folderPath",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetMergeCommit": {
+      "get": {
+        "summary": "Returns information about a specified merge commit.",
+        "operationId": "GetMergeCommit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetMergeConflicts": {
+      "get": {
+        "summary": "Returns information about merge conflicts between the before and after commit IDs for a pull request in a repository.",
+        "operationId": "GetMergeConflicts",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "maxConflictFiles": {
+                    "type": "integer"
+                  },
+                  "mergeOption": {
+                    "type": "string"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "mergeOption",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetMergeOptions": {
+      "get": {
+        "summary": "Returns information about the merge options available for merging two specified branches. For details about why a merge option is not available, use GetMergeConflicts or DescribeMergeConflicts.",
+        "operationId": "GetMergeOptions",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetPullRequest": {
+      "get": {
+        "summary": "Gets information about a pull request in a specified repository.",
+        "operationId": "GetPullRequest",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pullRequestId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetPullRequestApprovalStates": {
+      "get": {
+        "summary": "Gets information about the approval states for a specified pull request. Approval states only apply to pull requests that have one or more approval rules applied to them.",
+        "operationId": "GetPullRequestApprovalStates",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "revisionId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId",
+                  "revisionId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetPullRequestOverrideState": {
+      "get": {
+        "summary": "Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request.",
+        "operationId": "GetPullRequestOverrideState",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "revisionId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId",
+                  "revisionId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetRepository": {
+      "get": {
+        "summary": "Returns information about a repository. Note The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML- encode the description field in any application that uses this API to display the repository description on a webpage.",
+        "operationId": "GetRepository",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/GetRepositoryTriggers": {
+      "get": {
+        "summary": "Gets information about triggers configured for a repository.",
+        "operationId": "GetRepositoryTriggers",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/ListApprovalRuleTemplates": {
+      "post": {
+        "summary": "Lists all approval rule templates in the specified AWS Region in your AWS account. If an AWS Region is not specified, the AWS Region where you are signed in is used.",
+        "operationId": "ListApprovalRuleTemplates",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/ListAssociatedApprovalRuleTemplatesForRepository": {
+      "post": {
+        "summary": "Lists all approval rule templates that are associated with a specified repository.",
+        "operationId": "ListAssociatedApprovalRuleTemplatesForRepository",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/ListBranches": {
+      "post": {
+        "summary": "Gets information about one or more branches in a repository.",
+        "operationId": "ListBranches",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/ListFileCommitHistory": {
+      "post": {
+        "summary": "Retrieves a list of commits and changes to a specified file.",
+        "operationId": "ListFileCommitHistory",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commitSpecifier": {
+                    "type": "string"
+                  },
+                  "filePath": {
+                    "type": "string"
+                  },
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "filePath",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/ListPullRequests": {
+      "post": {
+        "summary": "Returns a list of pull requests for a specified repository. The return list can be refined by pull request status or pull request author ARN.",
+        "operationId": "ListPullRequests",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authorArn": {
+                    "type": "string"
+                  },
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "pullRequestStatus": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/ListRepositories": {
+      "post": {
+        "summary": "Gets information about one or more repositories.",
+        "operationId": "ListRepositories",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "order": {
+                    "type": "string"
+                  },
+                  "sortBy": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/ListRepositoriesForApprovalRuleTemplate": {
+      "post": {
+        "summary": "Lists all repositories associated with the specified approval rule template.",
+        "operationId": "ListRepositoriesForApprovalRuleTemplate",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  },
+                  "maxResults": {
+                    "type": "integer"
+                  },
+                  "nextToken": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/ListTagsForResource": {
+      "post": {
+        "summary": "Gets information about AWStags for a specified Amazon Resource Name (ARN) in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see CodeCommit Resources and Operations in the AWS CodeCommit User Guide .",
+        "operationId": "ListTagsForResource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nextToken": {
+                    "type": "string"
+                  },
+                  "resourceArn": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "resourceArn"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/MergeBranchesByFastForward": {
+      "post": {
+        "summary": "Merges two branches using the fast-forward merge strategy.",
+        "operationId": "MergeBranchesByFastForward",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "targetBranch": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/MergeBranchesBySquash": {
+      "post": {
+        "summary": "Merges two branches using the squash merge strategy.",
+        "operationId": "MergeBranchesBySquash",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authorName": {
+                    "type": "string"
+                  },
+                  "commitMessage": {
+                    "type": "string"
+                  },
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "keepEmptyFolders": {
+                    "type": "boolean"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "targetBranch": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/MergeBranchesByThreeWay": {
+      "post": {
+        "summary": "Merges two specified branches using the three-way merge strategy.",
+        "operationId": "MergeBranchesByThreeWay",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authorName": {
+                    "type": "string"
+                  },
+                  "commitMessage": {
+                    "type": "string"
+                  },
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "destinationCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "keepEmptyFolders": {
+                    "type": "boolean"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitSpecifier": {
+                    "type": "string"
+                  },
+                  "targetBranch": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "destinationCommitSpecifier",
+                  "repositoryName",
+                  "sourceCommitSpecifier"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/MergePullRequestByFastForward": {
+      "post": {
+        "summary": "Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the fast-forward merge strategy. If the merge is successful, it closes the pull request.",
+        "operationId": "MergePullRequestByFastForward",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/MergePullRequestBySquash": {
+      "post": {
+        "summary": "Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the squash merge strategy. If the merge is successful, it closes the pull request.",
+        "operationId": "MergePullRequestBySquash",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authorName": {
+                    "type": "string"
+                  },
+                  "commitMessage": {
+                    "type": "string"
+                  },
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "keepEmptyFolders": {
+                    "type": "boolean"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/MergePullRequestByThreeWay": {
+      "post": {
+        "summary": "Attempts to merge the source commit of a pull request into the specified destination branch for that pull request at the specified commit using the three-way merge strategy. If the merge is successful, it closes the pull request.",
+        "operationId": "MergePullRequestByThreeWay",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authorName": {
+                    "type": "string"
+                  },
+                  "commitMessage": {
+                    "type": "string"
+                  },
+                  "conflictDetailLevel": {
+                    "type": "string"
+                  },
+                  "conflictResolutionStrategy": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "keepEmptyFolders": {
+                    "type": "boolean"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "sourceCommitId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/OverridePullRequestApprovalRules": {
+      "post": {
+        "summary": "Sets aside (overrides) all approval rule requirements for a specified pull request.",
+        "operationId": "OverridePullRequestApprovalRules",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "overrideStatus": {
+                    "type": "string"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "revisionId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "overrideStatus",
+                  "pullRequestId",
+                  "revisionId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/PostCommentForComparedCommit": {
+      "post": {
+        "summary": "Posts a comment on the comparison between two commits.",
+        "operationId": "PostCommentForComparedCommit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "afterCommitId": {
+                    "type": "string"
+                  },
+                  "beforeCommitId": {
+                    "type": "string"
+                  },
+                  "clientRequestToken": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "afterCommitId",
+                  "content",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/PostCommentForPullRequest": {
+      "post": {
+        "summary": "Posts a comment on a pull request.",
+        "operationId": "PostCommentForPullRequest",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "afterCommitId": {
+                    "type": "string"
+                  },
+                  "beforeCommitId": {
+                    "type": "string"
+                  },
+                  "clientRequestToken": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "afterCommitId",
+                  "beforeCommitId",
+                  "content",
+                  "pullRequestId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/PostCommentReply": {
+      "post": {
+        "summary": "Posts a comment in reply to an existing comment on a comparison between commits or a pull request.",
+        "operationId": "PostCommentReply",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientRequestToken": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "inReplyTo": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "content",
+                  "inReplyTo"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/PutCommentReaction": {
+      "post": {
+        "summary": "Adds or updates a reaction to a specified comment for the user whose identity is used to make the request. You can only add or update a reaction for yourself. You cannot add, modify, or delete a reaction for another user.",
+        "operationId": "PutCommentReaction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commentId": {
+                    "type": "string"
+                  },
+                  "reactionValue": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "commentId",
+                  "reactionValue"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/PutFile": {
+      "post": {
+        "summary": "Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch.",
+        "operationId": "PutFile",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "branchName": {
+                    "type": "string"
+                  },
+                  "commitMessage": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "fileContent": {
+                    "type": "string",
+                    "format": "byte"
+                  },
+                  "fileMode": {
+                    "type": "string"
+                  },
+                  "filePath": {
+                    "type": "string"
+                  },
+                  "Note": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "parentCommitId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branchName",
+                  "fileContent",
+                  "filePath",
+                  "parentCommitId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/PutRepositoryTriggers": {
+      "post": {
+        "summary": "Replaces all triggers for a repository. Used to create or delete triggers.",
+        "operationId": "PutRepositoryTriggers",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "triggers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "repositoryName",
+                  "triggers"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/TagResource": {
+      "post": {
+        "summary": "Adds or updates tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see CodeCommit Resources and Operations in the AWS CodeCommit User Guide .",
+        "operationId": "TagResource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "resourceArn": {
+                    "type": "string"
+                  },
+                  "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "resourceArn",
+                  "tags"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/TestRepositoryTriggers": {
+      "post": {
+        "summary": "Tests the functionality of repository triggers by sending information to the trigger target. If real data is available in the repository, the test sends data from the last commit. If no data is available, sample data is generated.",
+        "operationId": "TestRepositoryTriggers",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repositoryName": {
+                    "type": "string"
+                  },
+                  "triggers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "repositoryName",
+                  "triggers"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UntagResource": {
+      "post": {
+        "summary": "Removes tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see CodeCommit Resources and Operations in the AWS CodeCommit User Guide .",
+        "operationId": "UntagResource",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "resourceArn": {
+                    "type": "string"
+                  },
+                  "tagKeys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "resourceArn",
+                  "tagKeys"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdateApprovalRuleTemplateContent": {
+      "post": {
+        "summary": "Updates the content of an approval rule template. You can change the number of required approvals, the membership of the approval rule, and whether an approval pool is defined.",
+        "operationId": "UpdateApprovalRuleTemplateContent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  },
+                  "existingRuleContentSha256": {
+                    "type": "string"
+                  },
+                  "newRuleContent": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateName",
+                  "newRuleContent"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdateApprovalRuleTemplateDescription": {
+      "post": {
+        "summary": "Updates the description for a specified approval rule template.",
+        "operationId": "UpdateApprovalRuleTemplateDescription",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleTemplateDescription": {
+                    "type": "string"
+                  },
+                  "approvalRuleTemplateName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleTemplateDescription",
+                  "approvalRuleTemplateName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdateApprovalRuleTemplateName": {
+      "post": {
+        "summary": "Updates the name of a specified approval rule template.",
+        "operationId": "UpdateApprovalRuleTemplateName",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "newApprovalRuleTemplateName": {
+                    "type": "string"
+                  },
+                  "oldApprovalRuleTemplateName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "newApprovalRuleTemplateName",
+                  "oldApprovalRuleTemplateName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdateComment": {
+      "post": {
+        "summary": "Replaces the contents of a comment.",
+        "operationId": "UpdateComment",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commentId": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "commentId",
+                  "content"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdateDefaultBranch": {
+      "post": {
+        "summary": "Sets or changes the default branch name for the specified repository. Note If you use this operation to change the default branch name to the current default branch name, a success message is returned even though the default branch did not change.",
+        "operationId": "UpdateDefaultBranch",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "defaultBranchName": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "defaultBranchName",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdatePullRequestApprovalRuleContent": {
+      "post": {
+        "summary": "Updates the structure of an approval rule created specifically for a pull request. For example, you can change the number of required approvers and the approval pool for approvers.",
+        "operationId": "UpdatePullRequestApprovalRuleContent",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalRuleName": {
+                    "type": "string"
+                  },
+                  "existingRuleContentSha256": {
+                    "type": "string"
+                  },
+                  "newRuleContent": {
+                    "type": "string"
+                  },
+                  "Note": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalRuleName",
+                  "newRuleContent",
+                  "Note"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdatePullRequestApprovalState": {
+      "post": {
+        "summary": "Updates the state of a user's approval on a pull request. The user is derived from the signed-in account when the request is made.",
+        "operationId": "UpdatePullRequestApprovalState",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "approvalState": {
+                    "type": "string"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "revisionId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "approvalState",
+                  "pullRequestId",
+                  "revisionId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdatePullRequestDescription": {
+      "post": {
+        "summary": "Replaces the contents of the description of a pull request.",
+        "operationId": "UpdatePullRequestDescription",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string"
+                  },
+                  "pullRequestId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "description",
+                  "pullRequestId"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdatePullRequestStatus": {
+      "post": {
+        "summary": "Updates the status of a pull request.",
+        "operationId": "UpdatePullRequestStatus",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "pullRequestStatus": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId",
+                  "pullRequestStatus"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdatePullRequestTitle": {
+      "post": {
+        "summary": "Replaces the title of a pull request.",
+        "operationId": "UpdatePullRequestTitle",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pullRequestId": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "pullRequestId",
+                  "title"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdateRepositoryDescription": {
+      "post": {
+        "summary": "Sets or changes the comment or description for a repository. Note The description field for a repository accepts all HTML characters and all valid Unicode characters. Applications that do not HTML-encode the description and display it in a webpage can expose users to potentially malicious code. Make sure that you HTML- encode the description field in any application that uses this API to display the repository description on a webpage.",
+        "operationId": "UpdateRepositoryDescription",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "repositoryDescription": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdateRepositoryEncryptionKey": {
+      "post": {
+        "summary": "Updates the AWS Key Management Service encryption key used to encrypt and decrypt a CodeCommit repository.",
+        "operationId": "UpdateRepositoryEncryptionKey",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kmsKeyId": {
+                    "type": "string"
+                  },
+                  "repositoryName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "kmsKeyId",
+                  "repositoryName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/UpdateRepositoryName": {
+      "post": {
+        "summary": "Renames a repository. The repository name must be unique across the calling AWS account. Repository names are limited to 100 alphanumeric, dash, and underscore characters, and cannot include certain characters. The suffix .git is prohibited. For more information about the limits on repository names, see Quotas in the AWS CodeCommit User Guide.",
+        "operationId": "UpdateRepositoryName",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "newName": {
+                    "type": "string"
+                  },
+                  "oldName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "newName",
+                  "oldName"
+                ]
+              },
+              "example": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          },
+          "400": {
+            "description": "Client Error"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    }
+  }
+}
